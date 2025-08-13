@@ -55,7 +55,10 @@ function filterInput() {
     operand1 = arr[0];
     operand2 = arr[2];
     if(operand2 === "") alert("Enter second operand!");
-    if (operand2 === "0") alert("Can't Divide by 0!");
+    if (operand2 === "0") {
+        alert("Can't Divide by 0!");
+        display.textContent = "";
+    }
     operate(operand1, arr[1], operand2);
 }
 
