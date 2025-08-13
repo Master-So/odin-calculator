@@ -54,7 +54,7 @@ function filterInput() {
 
     operand1 = arr[0];
     operand2 = arr[2];
-
+    if(operand2 === "") alert("Enter second operand!");
     operate(operand1, arr[1], operand2);
 }
 
