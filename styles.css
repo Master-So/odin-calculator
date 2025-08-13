@@ -42,6 +42,26 @@ body {
 .btn {
     flex: 1;
     height: 100%;
+    font-size: 16px;
 }
+
+#display {
+    border: 3px solid red;
+    display: flex;
+    flex-direction: column;
+}
+
+#input {
+    height: 50%;
+    border: 5px solid green;
+}
+
+#result {
+    border: 5px solid yellow;
+    height: 50%;
+}
+
+
+
 
 

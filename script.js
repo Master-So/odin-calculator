@@ -14,6 +14,11 @@ function divide(a, b) {
     return a/b;
 }
 
+function display(val) {
+    const display = document.querySelector("#input");
+    display.textContent = val;
+}
+
 function layout() {
     const layout = [
         ["7", "8", "9", "/"],
@@ -31,10 +36,14 @@ function layout() {
         row.forEach(label =>{
             const btnDiv = document.createElement("div");
             const btn = document.createElement("button");
+
             btnDiv.classList.add("btnDiv");
             btn.classList.add("btn");
             btnDiv.appendChild(btn);
             btn.textContent = label;
+            btn.addEventListener("click", (e) => {
+                display(e.target.textContent);
+            });
             rowDiv.appendChild(btnDiv);
         })
         container.appendChild(rowDiv);
@@ -48,5 +57,7 @@ function operate(a, operand, b) {
     else if (operand == '/') return a / b;
 
 }
+
+
 
 layout();
