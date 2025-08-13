@@ -54,10 +54,11 @@ body {
 #input {
     height: 50%;
     border: 5px solid green;
+    display: flex;
 }
 
 #result {
-    border: 5px solid yellow;
+    border: 5px solid royalblue;
     height: 50%;
 }
 

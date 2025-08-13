@@ -1,30 +1,26 @@
-function add(a, b) {
-    return a + b;
-}
+let operand1, operand2;
 
-function subtract(a, b) {
-    return a - b;
-}
-
-function multiply(a, b) {
-    return a * b;
-}
-
-function divide(a, b) {
-    return a/b;
-}
-
-function display(val) {
+function displayInput(val) {
     const display = document.querySelector("#input");
-    display.textContent = val;
+    if (val === "CLEAR") {
+        display.textContent = "";
+    }
+    else if (val === "=") {
+        filterInput();
+    }
+    else if (val === "+ " || val === "- " || val === "* " || val === "/ ") {
+        display.textContent = display.textContent + " " + val;
+    }
+    
+    else display.textContent = display.textContent + val;
 }
 
 function layout() {
     const layout = [
-        ["7", "8", "9", "/"],
-        ["4", "5", "6", "*"],
-        ["1", "2", "3", "-"],
-        ["+", "0", "=", "CLEAR"]
+        ["7", "8", "9", "/ "],
+        ["4", "5", "6", "* "],
+        ["1", "2", "3", "- "],
+        ["+ ", "0", "=", "CLEAR"]
     ];
 
     const container = document.querySelector(".buttons");
@@ -42,20 +38,37 @@ function layout() {
             btnDiv.appendChild(btn);
             btn.textContent = label;
             btn.addEventListener("click", (e) => {
-                display(e.target.textContent);
+                displayInput(e.target.textContent);
             });
+            
             rowDiv.appendChild(btnDiv);
         })
         container.appendChild(rowDiv);
     })
 }
 
-function operate(a, operand, b) {
-    if (operand == '+') return a + b;
-    else if (operand == '-') return a - b;
-    else if (operand == '*') return a * b;
-    else if (operand == '/') return a / b;
+function filterInput() {
+    const display = document.querySelector("#input");
+    let string = display.textContent;
+    let arr = string.split(" ");
 
+    operand1 = arr[0];
+    operand2 = arr[2];
+
+    operate(operand1, arr[1], operand2);
+}
+
+function operate(a, operator, b) {
+    let ans;
+    const resultDiv = document.querySelector("#result");
+    const inputDiv = document.querySelector("#input");
+    if (operator == '+') ans = a + b;
+    else if (operator == '-') ans = a - b;
+    else if (operator == '*') ans = a * b;
+    else if (operator == '/') ans = (a / b).toFixed(4);
+
+    resultDiv.textContent = ans;
+    inputDiv.textContent = ans;
 }
 
 
